@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثيم تفاعلي لـ إليان</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #2c1a30; /* الخلفية الداكنة الأصلية */
+            color: white; 
+            text-align: center; 
+            padding: 50px 20px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            margin: 0;
+        }
+        .card { 
+            background: #3d2444; /* لون الكارد الداكن */
+            padding: 30px 20px; 
+            border-radius: 15px; 
+            width: 100%;
+            max-width: 400px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+        }
+        h2 {
+            font-size: 22px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        button { 
+            background: #ff6600; /* تغيير لون الأزرار إلى البرتقالي */
+            color: white; 
+            border: none; 
+            padding: 12px 25px; 
+            border-radius: 25px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        button:hover { 
+            background: #cc5200; /* لون برتقالي غامق عند تمرير الماوس */
+        }
+    </style>
+</head>
+<body>
+
+<audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت.
+</audio>
+
+<div class="card">
+    <h2 id="text-box">هلو اليان 🥰<br>تعال عندي سوالف وياك</h2>
+    
+    <div id="button-area">
+        <button onclick="startTheme()">شنو ؟ 👀</button>
+    </div>
+</div>
+
+<script>
+function startTheme() {
+    const music = document.getElementById('bg-music');
+    // تشغيل الموسيقى مع أول ضغطة
+    music.play().catch(error => {
+        console.log("المتصفح يطلب تفاعل لتشغيل الصوت، الكود يعمل طبيعي.");
+    });
+    nextStep(1);
+}
+
+function nextStep(stepNumber) {
+    const textBox = document.getElementById('text-box');
+    const buttonArea = document.getElementById('button-area');
+
+    if(stepNumber === 1) {
+        textBox.innerHTML = "سمعت سام علاوي مخابرك اليوم 😉";
+        buttonArea.innerHTML = '<button onclick="nextStep(2)">صحيح 🙈</button>';
+    }
+    else if(stepNumber === 2) {
+        textBox.innerHTML = "زين اني عندي سوال 🤫";
+        buttonArea.innerHTML = '<button onclick="nextStep(3)">شنو 🙄</button>';
+    } 
+    else if(stepNumber === 3) {
+        textBox.innerHTML = "منو يقلة ب منو 😉";
+        buttonArea.innerHTML = '<button onclick="nextStep(4)">🤷🏻‍♂️</button>';
+    }
+    else if(stepNumber === 4) {
+        textBox.innerHTML = "يلا ماشي رح اغلس هسة 😏";
+        buttonArea.innerHTML = '<button onclick="alert(\'🖕🏽بلاع المادري شأكولك\')"> اضغط هنا </button>';
+    }
+}
+</script>
+
+</body>
+</html>
